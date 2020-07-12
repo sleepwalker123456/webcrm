@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: eureka-registory
+
+server:
+  port: 18082
+
+eureka:
+  instance:
+    hostname: cluster2
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka,http://cluster1:18081/eureka,http://master:18080/eureka
+

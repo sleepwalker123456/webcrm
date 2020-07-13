@@ -7,6 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author sleepwalker
  */
+
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WmsApplication {

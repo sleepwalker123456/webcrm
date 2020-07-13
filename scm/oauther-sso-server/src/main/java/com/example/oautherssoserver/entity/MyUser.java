@@ -5,6 +5,9 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Collection;
 
+/**
+ * @author sleepwalker
+ */
 public class MyUser extends User {
 
     private int departmentId;

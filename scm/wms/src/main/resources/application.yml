@@ -17,6 +17,16 @@ spring:
   thymeleaf:
     cache: false
 
+security:
+  oauth2:
+    client:
+      client-id: wms
+      client-secret: wms123
+      access-token-uri: http://localhost:18090/oauth2_resource_server/oauth/token
+      user-authorization-uri: http://localhost:18090/oauth2_resource_server/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:18090/oauth2_resource_server/user/me
+
 logging:
   level:
     root: debug

@@ -163,3 +163,36 @@ INSERT INTO `sys_user_role` VALUES (4, 2, 2);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+CREATE TABLE `sys_role_menu` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `role_id` int(11) NOT NULL COMMENT '角色ID',
+    `menu_id` int(11) NOT NULL COMMENT '菜单ID',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `sys_permission_menu` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `permission_id` int(11) NOT NULL COMMENT '权限ID',
+   `menu_id` int(11) NOT NULL COMMENT '菜单ID',
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `sys_menu` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `pid` int(11) DEFAULT '0' COMMENT '父ID',
+    `type` tinyint(4) NOT NULL COMMENT '菜单类型（1：菜单，2：按钮，3：操作）',
+    `name` varchar(64) CHARACTER SET utf8mb4 NOT NULL COMMENT '资源名称',
+    `code` varchar(64) CHARACTER SET latin1 NOT NULL COMMENT '资源标识（或者叫权限字符串）',
+    `uri` varchar(64) CHARACTER SET latin1 DEFAULT NULL COMMENT '资源URI',
+    `seq` int(11) DEFAULT '1' COMMENT '序号',
+    `status` int(2) NOT NULL COMMENT '状态（1：生效，0：失效）',
+    `create_user` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
+    `create_time` TIMESTAMP DEFAULT now(),
+    `update_user` varchar(64) CHARACTER SET latin1 DEFAULT NULL,
+    `update_time` TIMESTAMP DEFAULT now(),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `code` (`code`),
+    KEY `idx_type` (`type`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
